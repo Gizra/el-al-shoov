@@ -41,7 +41,7 @@ var caps = selectedCaps ? capsConfig[selectedCaps] : undefined;
 var providerPrefix = process.env.PROVIDER_PREFIX ? process.env.PROVIDER_PREFIX + '-' : '';
 var testName = selectedCaps ? providerPrefix + selectedCaps : providerPrefix + 'default';
 
-var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://www.elal.com/en/Israel/Pages/def';
+var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://www.elal.com/en/Israel/Pages/default.aspx';
 
 var resultsCallback = process.env.DEBUG ? console.log : shoovWebdrivercss.processResults;
 
@@ -63,16 +63,17 @@ describe('Visual monitor testing', function() {
       .url(baseUrl)
       .webdrivercss(testName + '.homepage', {
         name: '1',
+        elem: '#ctl00_DeltaPlaceHolderMain',
         exclude: [
           '.dateDetails_boxIcon',
         ],
         remove: [
-          '.plazmaText_bg'
+          '.plazmaText_holder'
         ],
         hide: [
           '.hotDeals_item img'
         ],
-        screenWidth: selectedCaps == 'chrome' ? [960] : undefined,
+        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
       }, resultsCallback)
       .call(done);
   });
