@@ -68,12 +68,13 @@ describe('Visual monitor testing', function() {
           '.dateDetails_boxIcon',
         ],
         remove: [
-          '.plazmaText_holder'
+          '.plazmaText_holder',
+          // '.headerSearch'
         ],
         hide: [
           '.hotDeals_item img'
         ],
-        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
+        screenWidth: selectedCaps == 'chrome' ? [960] : undefined,
       }, resultsCallback)
       .call(done);
   });
