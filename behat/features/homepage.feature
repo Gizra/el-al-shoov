@@ -1,10 +1,11 @@
 Feature: Homepage
-  In order to be able to view and get info about the site
+  In order to be able to view and get info about a deal.
   As an anonymous user
-  We need to be able to have access to the homepage
+  We need to be able to select a deal and get access to order flight
 
-  @api
-  Scenario: Visit the homepage
+  @javascript
+  Scenario: Visit the Asia deals
     Given I am an anonymous user
-    When  I visit the homepage
-    Then  I should have access to the page
+    When  I go to "http://www.elal.com/en/Deals/Offers/Asia/Pages/Hong-Kong-Beijing.aspx"
+    And   I select a deal
+    Then  I should see at least one flight
