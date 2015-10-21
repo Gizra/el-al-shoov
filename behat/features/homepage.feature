@@ -3,9 +3,9 @@ Feature: Homepage
   As an anonymous user
   We need to be able to select a deal and get access to order flight
 
-  @api @javascript
-  Scenario: Visit the asia deals
+  @javascript
+  Scenario: Visit the Asia deals
     Given I am an anonymous user
     When  I go to "http://www.elal.com/en/Deals/Offers/Asia/Pages/Hong-Kong-Beijing.aspx"
-    And   I select deal
+    And   I select a deal
     Then  I should see at least one flight

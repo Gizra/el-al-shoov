@@ -37,9 +37,9 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   }
 
   /**
-   * @When I select deal
+   * @When I select a deal
    */
-  public function iSelectDeal() {
+  public function iSelectADeal() {
     $this->iWaitForCssElement('.hotDeals_double');
     $element = $this->getSession()->getPage()->find('css', '.hotDeals_double:first-child a' );
     $element->click();
@@ -49,14 +49,15 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
    * @Then I should see at least one flight
    */
   public function iShouldSeeAtLeastOneFlight() {
-    $this->getSession()->wait(2000);
+    // Select browser tab.
     $windowNames = $this->getSession()->getWindowNames();
     if(count($windowNames) > 1) {
       $this->getSession()->switchToWindow($windowNames[1]);
     }
 
-    $this->iWaitForCssElement('.container');
+    $this->iWaitForCssElement('.ui-datepicker-calendar');
     $this->assertElementOnPage('.highlight');
+    $this->getSession()->wait(5000);
   }
 
   /**
