@@ -37,12 +37,22 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   }
 
   /**
-   * @When I select a deal
+   * @When I select first deal
    */
-  public function iSelectADeal() {
-    $this->iWaitForCssElement('.hotDeals_double');
-    $element = $this->getSession()->getPage()->find('css', '.hotDeals_double:first-child a' );
+  public function iSelectFirstDeal() {
+    $this->iWaitForCssElement('#hotDealSlider0_overflow');
+
+    $element = $this->getSession()->getPage()->find('css', '#hotDealSlider0_overflow > div > div > a' );
+    $this->getSession()->wait(3000);
     $element->click();
+
+    $this->iWaitForCssElement('#moreDeals0_overflow');
+
+    $element2 = $this->getSession()->getPage()->find('css', '#moreDeals0_overflow > div > div a' );
+    $this->getSession()->wait(3000);
+    $element2->click();
+
+
   }
 
   /**
