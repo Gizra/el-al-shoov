@@ -4,7 +4,7 @@ default:
       base_url: "http://www.elal.com/en"
 
       ## Selenium integration
-      # selenium2:
+      selenium2:
         # http://selenium is the URL alias to the Selenium docker container.
-        # wd_host: "http://selenium:4444/wd/hub"
-        # browser: chrome
+        wd_host: "http://selenium:4444/wd/hub"
+        browser: chrome
