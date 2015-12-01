@@ -46,12 +46,20 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     $this->getSession()->wait(2000);
     $hotDeals->click();
 
-    $this->iWaitForCssElement('#moreDeals0_overflow');
+    $this->iWaitForCssElement('.dealBox');
+    if (null === $this->assertElementOnPage('.dealBox_orderBtn > a')) {
+      $link = $this ->getSession()->getPage()->find('css','.dealBox_orderBtn > a');
+      $this->getSession()->wait(2000);
+      $link -> click();
+    }
 
-    $theDeal = $this->getSession()->getPage()->find('css', '#moreDeals0_overflow > div > div a:first-child' );
-    $this->getSession()->wait(2000);
-    $theDeal->click();
+    else {
+      $this->iWaitForCssElement('#moreDeals0_overflow');
 
+      $theDeal = $this->getSession()->getPage()->find('css', '#moreDeals0_overflow > div > div a:first-child' );
+      $this->getSession()->wait(2000);
+      $theDeal->click();
+    }
   }
 
   /**
