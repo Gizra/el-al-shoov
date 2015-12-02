@@ -43,13 +43,11 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     $this->iWaitForCssElement('#hotDealSlider0_overflow');
 
     $hotDeals = $this->getSession()->getPage()->find('css', '#hotDealSlider0_overflow > div > div > a:first-child' );
-    $this->getSession()->wait(2000);
     $hotDeals->click();
 
     $this->iWaitForCssElement('.dealBox');
     if (null === $this->assertElementOnPage('.dealBox_orderBtn > a')) {
       $link = $this ->getSession()->getPage()->find('css','.dealBox_orderBtn > a');
-      $this->getSession()->wait(2000);
       $link -> click();
     }
 
@@ -57,7 +55,6 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
       $this->iWaitForCssElement('#moreDeals0_overflow');
 
       $theDeal = $this->getSession()->getPage()->find('css', '#moreDeals0_overflow > div > div a:first-child' );
-      $this->getSession()->wait(2000);
       $theDeal->click();
     }
   }
@@ -72,9 +69,7 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
       $this->getSession()->switchToWindow($windowNames[1]);
     }
 
-    $this->iWaitForCssElement('.ui-datepicker-calendar');
-    $this->assertElementOnPage('.highlight');
-    $this->getSession()->wait(3000);
+    $this->iWaitForCssElement('.ui-datepicker-calendar .highlight');
   }
 
   /**
