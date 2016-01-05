@@ -69,6 +69,8 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
       $this->getSession()->switchToWindow($windowNames[1]);
     }
 
+    // Add wait after switching window. It prevents page crash
+    $this->getSession()->wait(2000);
     $this->iWaitForCssElement('.ui-datepicker-calendar .highlight');
   }
 
