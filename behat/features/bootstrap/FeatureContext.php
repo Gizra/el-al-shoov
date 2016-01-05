@@ -68,8 +68,9 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
     if(count($windowNames) > 1) {
       $this->getSession()->switchToWindow($windowNames[1]);
     }
-
+    $this->getSession()->wait(2000);
     $this->iWaitForCssElement('.ui-datepicker-calendar .highlight');
+    $this->getSession()->wait(2000);
   }
 
   /**
